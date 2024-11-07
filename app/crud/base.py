@@ -17,7 +17,6 @@ class BaseCRUD:
             result = await session.execute(query)
             return result.mappings().all()
 
-
     @classmethod
     async def add_record(cls, **data):
         async with async_session_maker() as session:
