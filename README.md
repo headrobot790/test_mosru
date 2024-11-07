@@ -22,7 +22,7 @@ Programm parse news from site mos.ru and return news in JSON format by API.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/headrobot790/
+   git clone git@github.com:headrobot790/test_mosru.git
    cd test_DIT
    
 2. Install poetry
