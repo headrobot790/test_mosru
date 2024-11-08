@@ -10,6 +10,6 @@ router = APIRouter(prefix="/metro", tags=["news"])
 
 
 @router.get("/metro", response_model=List[SNewsResponse])
-async def get_metro_news(day: int = Query(default=5, ge=1, le=360)) -> JSONResponse:
+async def get_metro_news(day: int = Query(default=5, ge=1, le=360)) -> List[SNewsResponse]:
     news = await NewsCRUD.find_news_for_last_days(day)
     return news
