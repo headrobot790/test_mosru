@@ -8,7 +8,7 @@ STORAGES_FILE = docker_compose/storage.yaml
 APP_CONTAINER = main-app
 
 
-.PHONY: app down app-shell app-logs storage storage-down prepare_network_and_migration
+.PHONY: app down app-shell app-logs storage storage-down
 app:
 	${DC} -p ${DC_NAME} -f ${APP_FILE} ${ENV} up --build -d
 
@@ -26,9 +26,3 @@ storage:
 
 storage-down:
 	${DC} -p ${DC_NAME}db -f ${STORAGES_FILE} ${ENV} down
-
-prepare_network_and_migration:
-	docker network inspect backend > /dev/null 2>&1 || docker network create backend
-	alembic revision --autogenerate -m 'Initial migration'
-	alembic upgrade head
-

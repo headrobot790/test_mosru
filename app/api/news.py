@@ -9,8 +9,7 @@ from schemas.news import SNewsResponse
 router = APIRouter(prefix="/metro", tags=["news"])
 
 
-@router.get("/news", response_model=List[SNewsResponse])
-async def get_news(day: int = Query(default=5, ge=1, le=360)) -> JSONResponse:
-    print(f"__get_news запрос новостей за последние {day} дней")
+@router.get("/metro", response_model=List[SNewsResponse])
+async def get_metro_news(day: int = Query(default=5, ge=1, le=360)) -> JSONResponse:
     news = await NewsCRUD.find_news_for_last_days(day)
     return news

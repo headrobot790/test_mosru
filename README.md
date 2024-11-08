@@ -39,10 +39,11 @@ Programm parse news from site mos.ru and return news in JSON format by API.
    ```bash
    docker network create backend
    
-6. 🚀build and run containers with `make` command
+6. 🚀build and run containers with `make` command and make migrations
    ```bash
    make app
    make storage
+   alembic upgrade head
    
 - or
 
@@ -50,12 +51,11 @@ Programm parse news from site mos.ru and return news in JSON format by API.
    ```bash
    docker compose -p mosru -f docker_compose/app.yaml --env-file .env up --build -d
    docker compose -p mosrudb -f docker_compose/storage.yaml --env-file .env up --build -d
-   alembic revision --autogenerate -m 'Initial migration'
    alembic upgrade head
 
 7. 🌍Open API documentation in your browser
    ```bash
-   http://127.0.0.1:8000/docs/api
+   http://127.0.0.1:8000/docs
    ```
 
 ENJOY ❤️
